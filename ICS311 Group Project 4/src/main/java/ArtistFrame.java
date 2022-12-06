@@ -55,8 +55,8 @@ public class ArtistFrame extends javax.swing.JFrame {
         artist_name_label = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         artist_name = new javax.swing.JTextField();
-        artist_name1 = new javax.swing.JTextField();
-        record_label_id = new javax.swing.JLabel();
+        record_label_id = new javax.swing.JTextField();
+        record_label_label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gabriel's Contact Form");
@@ -122,14 +122,14 @@ public class ArtistFrame extends javax.swing.JFrame {
             }
         });
 
-        artist_name1.setToolTipText("");
-        artist_name1.addActionListener(new java.awt.event.ActionListener() {
+        record_label_id.setToolTipText("");
+        record_label_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                artist_name1ActionPerformed(evt);
+                record_label_idActionPerformed(evt);
             }
         });
 
-        record_label_id.setText("Record Label");
+        record_label_label.setText("Record Label");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,7 +164,7 @@ public class ArtistFrame extends javax.swing.JFrame {
                                         .addGap(62, 62, 62)
                                         .addComponent(artist_name_label)
                                         .addGap(18, 18, 18)
-                                        .addComponent(artist_name1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(artist_name, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,9 +173,10 @@ public class ArtistFrame extends javax.swing.JFrame {
                                                 .addGap(18, 18, 18)
                                                 .addComponent(artist_id, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(record_label_id)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(artist_name, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                                .addComponent(record_label_label)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(record_label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(6, 6, 6)))))))
                         .addContainerGap(22, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -197,12 +198,12 @@ public class ArtistFrame extends javax.swing.JFrame {
                             .addComponent(artist_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(artist_name1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(artist_name_label))
+                            .addComponent(artist_name_label)
+                            .addComponent(artist_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(artist_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(record_label_id))))
+                            .addComponent(record_label_label)
+                            .addComponent(record_label_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newButton)
@@ -310,7 +311,7 @@ public class ArtistFrame extends javax.swing.JFrame {
             id = Integer.parseInt(artist_id.getText());
             labelId =  Integer.parseInt(record_label_id.getText());
             
-            if ((checkId(id)) && (checkLabel(labelId))) {
+            if ((checkId(id))) {
                 
             }
         } catch (Exception e) {
@@ -323,7 +324,7 @@ public class ArtistFrame extends javax.swing.JFrame {
 
         if (mode == Modes.NEW) {
             System.out.println("Save " + mode.toString() + " mode");
-            if (checkId(id) || checkLabel(labelId)) {
+            if (checkId(id)) {
                 JOptionPane.showMessageDialog(new JFrame(), "Error - ID or Record Label already exists. Choose new values.");
             } else {
                 try {
@@ -401,9 +402,9 @@ public class ArtistFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
-    private void artist_name1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artist_name1ActionPerformed
+    private void record_label_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_record_label_idActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_artist_name1ActionPerformed
+    }//GEN-LAST:event_record_label_idActionPerformed
     public void refresh() {
         try {
             if (connect()) {
@@ -436,8 +437,9 @@ public class ArtistFrame extends javax.swing.JFrame {
                 ResultSet rs = sta.executeQuery(query);
                 while (rs.next()) {
                     artist_id.setText(rs.getString("artist_id"));
-                    record_label_id.setText(rs.getString("record_label_id"));
                     artist_name.setText(rs.getString("artist_name"));
+                    record_label_id.setText(rs.getString("record_label_id"));
+                    
                 }
 
                 connection.close();
@@ -467,14 +469,14 @@ public class ArtistFrame extends javax.swing.JFrame {
     private javax.swing.JTextField artist_id;
     private javax.swing.JLabel artist_id_label;
     private javax.swing.JTextField artist_name;
-    private javax.swing.JTextField artist_name1;
     private javax.swing.JLabel artist_name_label;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton newButton;
-    private javax.swing.JLabel record_label_id;
+    private javax.swing.JTextField record_label_id;
+    private javax.swing.JLabel record_label_label;
     private javax.swing.JButton refreshButton;
     private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables

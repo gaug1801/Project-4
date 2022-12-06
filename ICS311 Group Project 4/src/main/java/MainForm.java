@@ -37,7 +37,7 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Open Record Label Database ");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -54,18 +54,18 @@ public class MainForm extends javax.swing.JFrame {
                         .addGap(119, 119, 119)
                         .addComponent(OpenArtistFrame))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(153, 153, 153)
+                        .addGap(92, 92, 92)
                         .addComponent(jButton1)))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addComponent(OpenArtistFrame)
-                .addGap(39, 39, 39)
+                .addGap(37, 37, 37)
                 .addComponent(jButton1)
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
         pack();
@@ -77,7 +77,8 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_OpenArtistFrameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        RecordLabelFrame lf = new RecordLabelFrame();
+        lf.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
