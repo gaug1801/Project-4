@@ -246,7 +246,7 @@ public class ArtistFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_artistListValueChanged
     private boolean connect() {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Team3Project", "root", "@Focus22!");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Team3Project", "root", "");
             return true;
         } catch (Exception e) {
             System.out.println("Error - database could not connect\n" + e.getMessage());
